@@ -1,0 +1,19 @@
+{
+  "name": "jestReports",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Bruno Reis <bruno.p.reis@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^26.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-jest": "^26.0.1"
+  }
+}
