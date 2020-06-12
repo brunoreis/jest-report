@@ -1,18 +1,11 @@
-const { ApolloServer, gql } = require('apollo-server')
+import { ApolloServer, gql } from 'apollo-server'
+import { typeDefs } from './typeDefs'
+import GraphQLJSON from 'graphql-type-json'
 
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
+const { PubSub } = require('apollo-server')
+const pubsub = new PubSub()
 
-  type Query {
-    books: [Book]
-  }
-`
+const TEST_RUN_STARTED = 'TEST_RUN_STARTED'
 
 const books = [
   {
@@ -29,6 +22,17 @@ const resolvers = {
   Query: {
     books: () => books,
   },
+  Mutation: {
+    testRunStarted: (root, args, context) => {
+      pubsub.publish(TEST_RUN_STARTED, { onTestRunStarted: args })
+    },
+  },
+  Subscription: {
+    onTestRunStarted: {
+      subscribe: () => pubsub.asyncIterator([TEST_RUN_STARTED]),
+    },
+  },
+  JSON: GraphQLJSON,
 }
 
 const server = new ApolloServer({ typeDefs, resolvers })
