@@ -18,8 +18,8 @@ class MyCustomReporter {
   onTestStart() {
     console.log('>>>>>>> onTestStart <<<<<<<<')
   }
-  onTestResult() {
-    console.log('>>>>>>> onTextResult <<<<<<<<')
+  onTestResult(a, b, c) {
+    console.log('>>>>>>> onTestResult <<<<<<<<', a, b, c)
   }
 }
 
