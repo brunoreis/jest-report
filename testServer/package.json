@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec babel-node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "dependencies": {
     "apollo-server": "^2.14.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "graphql": "^15.1.0"
   }
 }
