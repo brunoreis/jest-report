@@ -3,28 +3,33 @@ import { gql } from 'apollo-server'
 export const typeDefs = gql`
   scalar JSON
 
-  type Book {
-    title: String
-    author: String
-  }
-
   type Query {
-    books: [Book]
+    dummy: Int!
   }
 
-  type TestRunStartedMutationResult {
+  type onRunStartMutationResult {
     success: Boolean
   }
 
   type Mutation {
-    testRunStarted(testNum: Int): TestRunStartedMutationResult
+    onRunStart(data: onRunStartMutationInput): onRunStartMutationResult
   }
 
-  type TestRunStartedData {
-    testNum: Int
+  input onRunStartMutationInput {
+    runId: ID!
+    estimatedTime: Int!
+    numTotalTestSuites: Int!
+    testPathPattern: String
+  }
+
+  type onRunStartSubscriptionResult {
+    runId: ID!
+    estimatedTime: Int!
+    numTotalTestSuites: Int!
+    testPathPattern: String
   }
 
   type Subscription {
-    onTestRunStarted: TestRunStartedData
+    onRunStartSubscription: onRunStartSubscriptionResult
   }
 `

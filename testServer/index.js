@@ -7,28 +7,16 @@ const pubsub = new PubSub()
 
 const TEST_RUN_STARTED = 'TEST_RUN_STARTED'
 
-const books = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-]
-
 const resolvers = {
-  Query: {
-    books: () => books,
-  },
+  Query: {},
   Mutation: {
-    testRunStarted: (root, args, context) => {
-      pubsub.publish(TEST_RUN_STARTED, { onTestRunStarted: args })
+    onRunStart: (root, args, context) => {
+      console.log('testRunStarted', args)
+      pubsub.publish(TEST_RUN_STARTED, { onRunStartSubscription: args.data })
     },
   },
   Subscription: {
-    onTestRunStarted: {
+    onRunStartSubscription: {
       subscribe: () => pubsub.asyncIterator([TEST_RUN_STARTED]),
     },
   },

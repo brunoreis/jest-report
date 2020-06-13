@@ -8,7 +8,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "jest": "^26.0.1"
+    "graphql-request": "^2.0.0",
+    "jest": "^26.0.1",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
