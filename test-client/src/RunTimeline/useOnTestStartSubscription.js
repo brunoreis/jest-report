@@ -12,6 +12,7 @@ const USE_ON_TEST_START_SUBSCRIPTION = gql`
   }
 `
 
-export const useOnTestStartSubscription = ({ onSubscriptionData }) => {
-  return useSubscription(USE_ON_TEST_START_SUBSCRIPTION, { onSubscriptionData })
+export const useOnTestStartSubscription = () => {
+  const { data } = useSubscription(USE_ON_TEST_START_SUBSCRIPTION)
+  return data ? data.onTestStartSubscription : null
 }
