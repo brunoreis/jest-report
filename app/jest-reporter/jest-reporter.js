@@ -1,4 +1,5 @@
 const notifyOnRunStart = require('./notifyOnRunStart')
+const notifyOnTestStart = require('./notifyOnTestStart')
 
 class MyCustomReporter {
   constructor(globalConfig, options) {
@@ -13,11 +14,11 @@ class MyCustomReporter {
     const { testNamePattern, testPathPattern } = this._globalConfig
 
     const payload = {
+      runId: this._id,
       estimatedTime,
       numTotalTestSuites,
       testNamePattern,
       testPathPattern,
-      runId: this._id,
     }
     console.log(JSON.stringify(payload))
     notifyOnRunStart(payload)
@@ -25,20 +26,17 @@ class MyCustomReporter {
 
   onTestStart(test) {
     const payload = {
+      runId: this._id,
       path: test.path,
       rootDir: test.context.config.rootDir,
       duration: test.duration,
-      name: test.context.config.name,
     }
-    // console.log('>>>>>>> onTestStart: payload <<<<<<<<', payload, test)
-    // console.log('>>>>>>> onTestStart <<<<<<<<', payload)
+    notifyOnTestStart(payload)
   }
 
   onTestResult(test, testResult, aggregatedResult) {
-    // console.log('----------------------------------------', test.context.config)
-    // testResult.testResults.forEach((testResult) => console.log(testResult))
-
     const payload = {
+      runId: this._id,
       name: test.context.config.name,
       duration: test.duration,
       testResults: testResult.testResults.map((testResult) => ({
@@ -52,16 +50,17 @@ class MyCustomReporter {
         title: testResult.title,
       })),
     }
+    // notifyOnTestResult(payload)
     // console.log('>>>>>>> onTestResult <<<<<<<<', payload, aggregatedResult)
     // console.log('>>>>>>> onTestResult <<<<<<<<', payload)
   }
 
   onRunComplete(contexts, results) {
     console.log('>>>>>>> onRunComplete <<<<<<<<')
-    console.log(this._id)
-    // console.log('>>>>>>> onRunComplete <<<<<<<<', contexts)
-    // console.log(results)
-    // console.log(results)
+    const payload = {
+      runId: this._id,
+    }
+    //notifyOnRunComplete(payload)
   }
 }
 

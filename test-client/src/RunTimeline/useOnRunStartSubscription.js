@@ -12,6 +12,6 @@ const USE_ON_RUN_START_SUBSCRIPTION = gql`
   }
 `
 
-export const useOnRunStartSubscription = () => {
-  return useSubscription(USE_ON_RUN_START_SUBSCRIPTION)
+export const useOnRunStartSubscription = ({ onSubscriptionData }) => {
+  useSubscription(USE_ON_RUN_START_SUBSCRIPTION, { onSubscriptionData })
 }

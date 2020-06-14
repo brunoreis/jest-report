@@ -5,19 +5,25 @@ import GraphQLJSON from 'graphql-type-json'
 const { PubSub } = require('apollo-server')
 const pubsub = new PubSub()
 
-const TEST_RUN_STARTED = 'TEST_RUN_STARTED'
+const RUN_START = 'RUN_START'
+const TEST_START = 'TEST_START'
 
 const resolvers = {
   Query: {},
   Mutation: {
     onRunStart: (root, args, context) => {
-      console.log('testRunStarted', args)
-      pubsub.publish(TEST_RUN_STARTED, { onRunStartSubscription: args.data })
+      pubsub.publish(RUN_START, { onRunStartSubscription: args.data })
+    },
+    onTestStart: (root, args, context) => {
+      pubsub.publish(TEST_START, { onTestStartSubscription: args.data })
     },
   },
   Subscription: {
     onRunStartSubscription: {
-      subscribe: () => pubsub.asyncIterator([TEST_RUN_STARTED]),
+      subscribe: () => pubsub.asyncIterator([RUN_START]),
+    },
+    onTestStartSubscription: {
+      subscribe: () => pubsub.asyncIterator([TEST_START]),
     },
   },
   JSON: GraphQLJSON,

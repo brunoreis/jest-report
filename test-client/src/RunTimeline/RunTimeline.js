@@ -1,10 +1,7 @@
 import React from 'react'
-import { useOnRunStartSubscription } from './useOnRunStartSubscription'
+import { useTestRunsReducer } from './useTestRunsReducer'
 
 export const RunTimeline = () => {
-  const x = useOnRunStartSubscription()
-  if (x.data) {
-    console.log(x.data.onRunStartSubscription)
-  }
+  const { testRuns } = useTestRunsReducer()
   return <div>RunTimeline</div>
 }

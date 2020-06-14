@@ -7,12 +7,13 @@ export const typeDefs = gql`
     dummy: Int!
   }
 
-  type onRunStartMutationResult {
+  type mutationResult {
     success: Boolean
   }
 
   type Mutation {
-    onRunStart(data: onRunStartMutationInput): onRunStartMutationResult
+    onRunStart(data: onRunStartMutationInput): mutationResult
+    onTestStart(data: onTestStartMutationInput): mutationResult
   }
 
   input onRunStartMutationInput {
@@ -29,7 +30,22 @@ export const typeDefs = gql`
     testPathPattern: String
   }
 
+  input onTestStartMutationInput {
+    runId: ID!
+    path: String!
+    rootDir: String!
+    duration: Int!
+  }
+
+  type onTestStartSubscriptionResult {
+    runId: ID!
+    path: String!
+    rootDir: String!
+    duration: Int!
+  }
+
   type Subscription {
     onRunStartSubscription: onRunStartSubscriptionResult
+    onTestStartSubscription: onTestStartSubscriptionResult
   }
 `
