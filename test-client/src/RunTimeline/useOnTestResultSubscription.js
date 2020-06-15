@@ -22,8 +22,5 @@ const USE_ON_TEST_RESULT_SUBSCRIPTION = gql`
 
 export const useOnTestResultSubscription = () => {
   const { data } = useSubscription(USE_ON_TEST_RESULT_SUBSCRIPTION)
-  console.log('-=-- ')
-  console.log(data && data.onTestResultSubscription)
-  return {}
-  // return data ? data.onTestResultSubscription : null
+  return data ? data.onTestResultSubscription : null
 }

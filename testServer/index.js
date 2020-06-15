@@ -23,7 +23,7 @@ const resolvers = {
       pubsub.publish(TEST_RESULT, { onTestResultSubscription: args.data })
     },
     onRunComplete: (root, args, context) => {
-      pubsub.publish(TEST_RESULT, { onRunCompleteSubscription: args.data })
+      pubsub.publish(RUN_COMPLETE, { onRunCompleteSubscription: args.data })
     },
   },
   Subscription: {

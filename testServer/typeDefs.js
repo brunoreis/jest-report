@@ -14,8 +14,8 @@ export const typeDefs = gql`
   type Mutation {
     onRunStart(data: onRunStartMutationInput): mutationResult
     onTestStart(data: onTestStartMutationInput): mutationResult
-    onRunComplete(data: onRunCompleteMutationInput): mutationResult
     onTestResult(data: onTestResultMutationInput): mutationResult
+    onRunComplete(data: onRunCompleteMutationInput): mutationResult
   }
 
   input onRunStartMutationInput {

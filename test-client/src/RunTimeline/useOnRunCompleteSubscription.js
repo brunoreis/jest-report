@@ -11,8 +11,6 @@ const USE_ON_RUN_COMPLETE_SUBSCRIPTION = gql`
 `
 
 export const useOnRunCompleteSubscription = () => {
-  const x = useSubscription(USE_ON_RUN_COMPLETE_SUBSCRIPTION)
-  // console.log('useOnRunCompleteSubscription:::', x)
-  return {}
-  // return data ? data.onRunCompleteSubscription : null
+  const { data } = useSubscription(USE_ON_RUN_COMPLETE_SUBSCRIPTION)
+  return data ? data.onRunCompleteSubscription : null
 }

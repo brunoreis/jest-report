@@ -32,12 +32,18 @@ export const useTestRunsReducer = () => {
 
   const useOnTestResultSubscriptionData = useOnTestResultSubscription()
   if (useOnTestResultSubscriptionData) {
-    console.log('useOnTestResultSubscriptionData')
+    console.log(
+      'useOnTestResultSubscriptionData',
+      useOnTestResultSubscriptionData,
+    )
   }
 
   const useOnRunCompleteSubscriptionData = useOnRunCompleteSubscription()
   if (useOnRunCompleteSubscriptionData) {
-    console.log('useOnRunCompleteSubscriptionData')
+    console.log(
+      'useOnRunCompleteSubscriptionData',
+      useOnRunCompleteSubscriptionData,
+    )
   }
 
   // return useMemo(
