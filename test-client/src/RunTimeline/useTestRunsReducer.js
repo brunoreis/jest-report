@@ -1,6 +1,8 @@
 import { useReducer, useMemo } from 'react'
 import { useOnRunStartSubscription } from './useOnRunStartSubscription'
 import { useOnTestStartSubscription } from './useOnTestStartSubscription'
+import { useOnTestResultSubscription } from './useOnTestResultSubscription'
+import { useOnRunCompleteSubscription } from './useOnRunCompleteSubscription'
 
 export const useTestRunsReducer = () => {
   const [state, dispatch] = useReducer(reducer, [])
@@ -26,6 +28,16 @@ export const useTestRunsReducer = () => {
         payload: useOnTestStartSubscriptionData,
       })
     }
+  }
+
+  const useOnTestResultSubscriptionData = useOnTestResultSubscription()
+  if (useOnTestResultSubscriptionData) {
+    console.log('useOnTestResultSubscriptionData')
+  }
+
+  const useOnRunCompleteSubscriptionData = useOnRunCompleteSubscription()
+  if (useOnRunCompleteSubscriptionData) {
+    console.log('useOnRunCompleteSubscriptionData')
   }
 
   // return useMemo(

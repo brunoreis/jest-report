@@ -7,6 +7,8 @@ const pubsub = new PubSub()
 
 const RUN_START = 'RUN_START'
 const TEST_START = 'TEST_START'
+const TEST_RESULT = 'TEST_RESULT'
+const RUN_COMPLETE = 'RUN_COMPLETE'
 
 const resolvers = {
   Query: {},
@@ -17,6 +19,12 @@ const resolvers = {
     onTestStart: (root, args, context) => {
       pubsub.publish(TEST_START, { onTestStartSubscription: args.data })
     },
+    onTestResult: (root, args, context) => {
+      pubsub.publish(TEST_RESULT, { onTestResultSubscription: args.data })
+    },
+    onRunComplete: (root, args, context) => {
+      pubsub.publish(TEST_RESULT, { onRunCompleteSubscription: args.data })
+    },
   },
   Subscription: {
     onRunStartSubscription: {
@@ -24,6 +32,12 @@ const resolvers = {
     },
     onTestStartSubscription: {
       subscribe: () => pubsub.asyncIterator([TEST_START]),
+    },
+    onTestResultSubscription: {
+      subscribe: () => pubsub.asyncIterator([TEST_RESULT]),
+    },
+    onRunCompleteSubscription: {
+      subscribe: () => pubsub.asyncIterator([RUN_COMPLETE]),
     },
   },
   JSON: GraphQLJSON,

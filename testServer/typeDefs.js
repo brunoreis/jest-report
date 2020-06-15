@@ -14,6 +14,8 @@ export const typeDefs = gql`
   type Mutation {
     onRunStart(data: onRunStartMutationInput): mutationResult
     onTestStart(data: onTestStartMutationInput): mutationResult
+    onRunComplete(data: onRunCompleteMutationInput): mutationResult
+    onTestResult(data: onTestResultMutationInput): mutationResult
   }
 
   input onRunStartMutationInput {
@@ -44,8 +46,54 @@ export const typeDefs = gql`
     duration: Int!
   }
 
+  type TestResult {
+    ancestorTitles: [String!]
+    duration: Int!
+    failureMessage: String
+    fullName: String!
+    location: String
+    numPassingAsserts: Int!
+    status: String!
+    title: String!
+  }
+
+  input TestResultInput {
+    ancestorTitles: [String!]
+    duration: Int!
+    failureMessage: String
+    fullName: String!
+    location: String
+    numPassingAsserts: Int!
+    status: String!
+    title: String!
+  }
+
+  input onTestResultMutationInput {
+    runId: ID!
+    duration: Int!
+    testResults: [TestResultInput!]
+  }
+
+  type onTestResultSubscriptionResult {
+    runId: ID!
+    duration: Int!
+    testResults: [TestResult!]
+  }
+
+  input onRunCompleteMutationInput {
+    runId: ID!
+    success: Boolean!
+  }
+
+  type onRunCompleteSubscriptionResult {
+    runId: ID!
+    success: Boolean!
+  }
+
   type Subscription {
     onRunStartSubscription: onRunStartSubscriptionResult
     onTestStartSubscription: onTestStartSubscriptionResult
+    onTestResultSubscription: onTestResultSubscriptionResult
+    onRunCompleteSubscription: onRunCompleteSubscriptionResult
   }
 `
