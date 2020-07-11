@@ -5,6 +5,7 @@ import { apolloClient } from './apolloClient'
 import { RunTimeline } from './RunTimeline'
 
 function App() {
+  console.log('App')
   return (
     <ApolloProvider client={apolloClient}>
       <RunTimeline />

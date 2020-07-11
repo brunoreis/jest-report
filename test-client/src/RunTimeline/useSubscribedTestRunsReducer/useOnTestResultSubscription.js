@@ -21,6 +21,8 @@ const USE_ON_TEST_RESULT_SUBSCRIPTION = gql`
 `
 
 export const useOnTestResultSubscription = () => {
-  const { data } = useSubscription(USE_ON_TEST_RESULT_SUBSCRIPTION)
-  return data ? data.onTestResultSubscription : null
+  const subscriptionResponse = useSubscription(USE_ON_TEST_RESULT_SUBSCRIPTION)
+  if (subscriptionResponse.error) {
+    console.error(subscriptionResponse.error)
+  }
 }

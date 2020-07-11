@@ -12,7 +12,12 @@ const USE_ON_RUN_START_SUBSCRIPTION = gql`
   }
 `
 
-export const useOnRunStartSubscription = () => {
-  const { data } = useSubscription(USE_ON_RUN_START_SUBSCRIPTION)
-  return data ? data.onRunStartSubscription : null
+export const useOnRunStartSubscription = (options) => {
+  const subscriptionResponse = useSubscription(
+    USE_ON_RUN_START_SUBSCRIPTION,
+    options,
+  )
+  if (subscriptionResponse.error) {
+    console.error(subscriptionResponse.error)
+  }
 }
