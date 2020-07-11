@@ -1,5 +1,4 @@
 export const onTestStart = (state, action) => {
-  console.log('onTestStart', action)
   return {
     ...state,
     runs: state.runs.map((testRun) => {
