@@ -8,16 +8,12 @@ const initialState = () => ({
 export const useTestRunsReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState())
 
-  const buildAction = (type, payload) =>
-    useCallback(
-      (payload) => {
-        dispatch({
-          type,
-          payload,
-        })
-      },
-      [dispatch],
-    )
+  const buildAction = (type) => (payload) => {
+    dispatch({
+      type,
+      payload,
+    })
+  } // use might need to useCallback here. I removed it because it was hiding errors under a "diff num of hooks called" error
 
   return {
     state,

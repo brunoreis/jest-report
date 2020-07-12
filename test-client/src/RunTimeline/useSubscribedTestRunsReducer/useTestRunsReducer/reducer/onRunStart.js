@@ -1,12 +1,12 @@
-import produce from 'immer'
+import { getRun } from './helpers/getRun'
+import { initRun } from './helpers/initRun'
 
-export const onRunStart = (state, action) => {
-  const run = state.runs.find((run) => run.runId === action.payload.runId)
-  if (run) console.warn('onRunStart called again for the same testId')
-  const newState = run
-    ? state
-    : produce(state, (draftState) => {
-        draftState.runs.push({ ...action.payload, testResults: [] })
-      })
-  return newState
-}
+export const onRunStart = (
+  draftState,
+  { payload: { runId, estimatedTime, testPathPattern, numTotalTestSuites } },
+) =>
+  getRun(draftState, runId)
+    ? console.warn(`onRunStart called again for the same runId: ${runId}`)
+    : draftState.runs.push(
+        initRun({ runId, estimatedTime, testPathPattern, numTotalTestSuites }),
+      )

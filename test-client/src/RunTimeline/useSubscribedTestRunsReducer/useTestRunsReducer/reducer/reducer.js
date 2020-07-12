@@ -1,16 +1,17 @@
+import produce from 'immer'
+
 import { onRunStart } from './onRunStart'
 import { onTestStart } from './onTestStart'
 
-export const reducer = (state, action) => {
-  const runId = action.payload.runId
+export const reducer = produce((draftState, action) => {
   switch (action.type) {
     case 'onRunStart':
-      return onRunStart(state, action)
+      onRunStart(draftState, action)
+      break
     case 'onTestStart':
-      return onTestStart(state, action)
+      onTestStart(draftState, action)
+      break
     // case 'onTestResult':
-    // return onTestResult(state, action)
-    default:
-      throw new Error('Unhandled type: ' + action.type)
+    //   return onTestResult(draftState, action)
   }
-}
+}, {})

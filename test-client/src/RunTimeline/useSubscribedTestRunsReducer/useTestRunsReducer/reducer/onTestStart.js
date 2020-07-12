@@ -1,13 +1,14 @@
-export const onTestStart = (state, action) => {
-  return {
-    ...state,
-    runs: state.runs.map((testRun) => {
-      if (testRun.runId != action.payload.runId) return testRun
+import { getRun } from './helpers/getRun'
+import { getTestResult } from './helpers/getTestResult'
+import { initTestResult } from './helpers/initTestResult'
 
-      return {
-        ...testRun,
-        testResults: [...testRun.testResults, action.payload],
-      }
-    }),
-  }
+export const onTestStart = (
+  draftState,
+  { payload: { runId, path, rootDir, duration } },
+) => {
+  const run = getRun(draftState, runId)
+  const testResult = getTestResult(run, path)
+  testResult
+    ? (testResult.running = true)
+    : run.testResults.push(initTestResult({ runId, path, rootDir, duration }))
 }

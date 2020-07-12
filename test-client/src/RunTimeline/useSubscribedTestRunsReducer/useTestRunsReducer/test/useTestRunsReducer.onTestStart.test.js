@@ -29,8 +29,22 @@ describe('useTestRunsReducer | onTestStart', () => {
       )
     })
 
-    it.skip('should not register the same test twice', () => {})
-    it.skip('should put test in running state if it is not', () => {})
+    it('should not register the same test twice', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+      onRunStart(result, { runId: 'xxxrunId2' })
+      onTestStart(result, { runId: 'xxxrunId2', path: 'unique/path/to/test' })
+      onTestStart(result, { runId: 'xxxrunId2', path: 'unique/path/to/test' })
+      expect(result.current.state.runs[0].testResults.length).toBe(1)
+      expect(result.current.state.runs[0].testResults[0].path).toBe(
+        'unique/path/to/test',
+      )
+    })
+    it('should put test in running state if it is not', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+      onRunStart(result, { runId: 'xxxrunId2' })
+      onTestStart(result, { runId: 'xxxrunId2', path: 'unique/path/to/test' })
+      expect(result.current.state.runs[0].testResults[0].running).toBe(true)
+    })
   })
 })
 
