@@ -6,6 +6,7 @@ const USE_ON_TEST_RESULT_SUBSCRIPTION = gql`
     onTestResultSubscription {
       runId
       duration
+      path
       testResults {
         ancestorTitles
         duration
@@ -19,9 +20,12 @@ const USE_ON_TEST_RESULT_SUBSCRIPTION = gql`
     }
   }
 `
+export const useOnTestResultSubscription = (options) => {
+  const subscriptionResponse = useSubscription(
+    USE_ON_TEST_RESULT_SUBSCRIPTION,
+    options,
+  )
 
-export const useOnTestResultSubscription = () => {
-  const subscriptionResponse = useSubscription(USE_ON_TEST_RESULT_SUBSCRIPTION)
   if (subscriptionResponse.error) {
     console.error(subscriptionResponse.error)
   }

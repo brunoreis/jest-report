@@ -21,6 +21,20 @@ describe('useTestRunsReducer | onRunStart', () => {
       expect(result.current.state.runs[0].runId).toBe('xxxrunId')
     })
 
+    it('run should have: runId, path, rootDir, duration, running and testResults', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+      onRunStart(result, { runId: 'xxxrunId' })
+      onRunStart(result, { runId: 'xxxrunId2' })
+      expect(result.current.state.runs.length).toBe(2)
+      expect(Object.keys(result.current.state.runs[0])).toEqual([
+        'runId',
+        'estimatedTime',
+        'testPathPattern',
+        'numTotalTestSuites',
+        'testResults',
+      ])
+    })
+
     it('should not regiter two for the same runId', () => {
       const { result } = renderHook(() => useTestRunsReducer())
       act(() =>

@@ -2,6 +2,7 @@ import produce from 'immer'
 
 import { onRunStart } from './onRunStart'
 import { onTestStart } from './onTestStart'
+import { onTestResult } from './onTestResult'
 
 export const reducer = produce((draftState, action) => {
   switch (action.type) {
@@ -11,7 +12,8 @@ export const reducer = produce((draftState, action) => {
     case 'onTestStart':
       onTestStart(draftState, action)
       break
-    // case 'onTestResult':
-    //   return onTestResult(draftState, action)
+    case 'onTestResult':
+      onTestResult(draftState, action)
+      break
   }
 }, {})

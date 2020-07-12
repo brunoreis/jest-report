@@ -38,6 +38,7 @@ class MyCustomReporter {
   onTestResult(test, testResult, aggregatedResult) {
     const payload = {
       runId: this._id,
+      path: test.path,
       duration: test.duration,
       testResults: testResult.testResults.map((testResult) => ({
         ancestorTitles: testResult.ancestorTitles,

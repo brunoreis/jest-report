@@ -71,12 +71,14 @@ export const typeDefs = gql`
   input onTestResultMutationInput {
     runId: ID!
     duration: Int!
+    path: String!
     testResults: [TestResultInput!]
   }
 
   type onTestResultSubscriptionResult {
     runId: ID!
     duration: Int!
+    path: String!
     testResults: [TestResult!]
   }
 

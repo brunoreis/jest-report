@@ -4,4 +4,5 @@ export const initTestResult = ({ runId, path, rootDir, duration }) => ({
   rootDir,
   duration,
   running: true,
+  innerTestResults: [],
 })

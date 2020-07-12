@@ -17,6 +17,22 @@ describe('useTestRunsReducer | onTestStart', () => {
       )
     })
 
+    it('should have keys: runId, path, rootDir, duration, running, innerTestResults', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+      onRunStart(result, { runId: 'xxxrunId' })
+      onRunStart(result, { runId: 'xxxrunId2' })
+      onTestStart(result, { runId: 'xxxrunId2' })
+      expect(result.current.state.runs[1].runId).toBe('xxxrunId2')
+      expect(Object.keys(result.current.state.runs[1].testResults[0])).toEqual([
+        'runId',
+        'path',
+        'rootDir',
+        'duration',
+        'running',
+        'innerTestResults',
+      ])
+    })
+
     it('should register the correct test path', () => {
       const { result } = renderHook(() => useTestRunsReducer())
       onRunStart(result, { runId: 'xxxrunId' })

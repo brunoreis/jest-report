@@ -20,5 +20,6 @@ export const useTestRunsReducer = () => {
     dispatch,
     onRunStart: buildAction('onRunStart'),
     onTestStart: buildAction('onTestStart'),
+    onTestResult: buildAction('onTestResult'),
   }
 }

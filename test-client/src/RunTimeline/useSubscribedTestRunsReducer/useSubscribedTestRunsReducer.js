@@ -32,14 +32,14 @@ export const useSubscribedTestRunsReducer = () => {
     },
   })
 
-  // const useOnTestResultSubscriptionData = useOnTestResultSubscription()
-  // if (useOnTestResultSubscriptionData) {
-  //   dispatch({
-  //     type: 'onTestResult',
-  //     payload: useOnTestResultSubscriptionData,
-  //   })
-  //   log('useOnTestResultSubscriptionData', useOnTestResultSubscriptionData)
-  // }
+  useOnTestResultSubscription({
+    onSubscriptionData: ({ subscriptionData }) => {
+      dispatch({
+        type: 'onTestResult',
+        payload: subscriptionData.data.onTestResultSubscription,
+      })
+    },
+  })
 
   // const useOnRunCompleteSubscriptionData = useOnRunCompleteSubscription()
   // if (useOnRunCompleteSubscriptionData) {
@@ -48,14 +48,3 @@ export const useSubscribedTestRunsReducer = () => {
   // console.log('state', state)
   return state
 }
-
-const getTestRun = (state, runId) =>
-  state.runs.find((testRun) => testRun.runId === runId)
-
-// const getTest = (state, runId, path) => {
-//   const testRun = getTestRun(state, runId)
-//   return (
-//     testRun &&
-//     testRun.testResults.find((testResult) => testResult.path === path)
-//   )
-// }
