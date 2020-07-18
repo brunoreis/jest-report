@@ -5,8 +5,8 @@ const notifyOnRunComplete = require('./notifyOnRunComplete')
 
 const notifyToggles = {
   runStart: true,
-  testStart: false,
-  testResult: false,
+  testStart: true,
+  testResult: true,
   runComplete: false,
 }
 
@@ -21,7 +21,6 @@ class MyCustomReporter {
     const { numTotalTestSuites } = results
     const { estimatedTime } = options
     const { testNamePattern, testPathPattern } = this._globalConfig
-    console.log('this', this)
 
     const payload = {
       runId: this._id,
@@ -29,7 +28,7 @@ class MyCustomReporter {
       numTotalTestSuites,
       testNamePattern,
       testPathPattern,
-      rootDir,
+      rootDir: this._globalConfig.rootDir,
     }
     notifyToggles.runStart && notifyOnRunStart(payload)
   }
@@ -38,7 +37,6 @@ class MyCustomReporter {
     const payload = {
       runId: this._id,
       path: test.path,
-      rootDir: test.context.config.rootDir,
       duration: test.duration,
     }
     notifyToggles.testStart && notifyOnTestStart(payload)

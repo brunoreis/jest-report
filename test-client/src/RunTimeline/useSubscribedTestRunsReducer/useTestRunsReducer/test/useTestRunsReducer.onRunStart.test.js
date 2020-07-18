@@ -28,6 +28,7 @@ describe('useTestRunsReducer | onRunStart', () => {
       expect(result.current.state.runs.length).toBe(2)
       expect(Object.keys(result.current.state.runs[0])).toEqual([
         'runId',
+        'rootDir',
         'estimatedTime',
         'testPathPattern',
         'numTotalTestSuites',

@@ -3,6 +3,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import './App.css'
 import { apolloClient } from './apolloClient'
 import { RunTimeline } from './RunTimeline'
+import { hot } from 'react-hot-loader'
 
 function App() {
   console.log('App')
@@ -13,4 +14,4 @@ function App() {
   )
 }
 
-export default App
+export default hot(module)(App)

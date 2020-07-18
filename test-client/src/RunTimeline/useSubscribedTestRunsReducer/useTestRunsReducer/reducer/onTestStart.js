@@ -4,11 +4,11 @@ import { initTestResult } from './helpers/initTestResult'
 
 export const onTestStart = (
   draftState,
-  { payload: { runId, path, rootDir, duration } },
+  { payload: { runId, path, duration } },
 ) => {
   const run = getRun(draftState, runId)
   const testResult = getTestResult(run, path)
   testResult
     ? (testResult.running = true)
-    : run.testResults.push(initTestResult({ runId, path, rootDir, duration }))
+    : run.testResults.push(initTestResult({ runId, path, duration }))
 }

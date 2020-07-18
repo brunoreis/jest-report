@@ -5,6 +5,7 @@ export const mockOnRunStart = ({
   numTotalTestSuites = 4,
 } = {}) => ({
   runId,
+  rootDir: '/app/root/dir',
   estimatedTime,
   testPathPattern,
   numTotalTestSuites,

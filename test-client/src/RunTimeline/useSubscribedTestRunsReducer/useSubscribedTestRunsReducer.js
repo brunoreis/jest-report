@@ -13,7 +13,11 @@ const log = function () {
 
 export const useSubscribedTestRunsReducer = () => {
   const { state, dispatch } = useTestRunsReducer()
+  useBindSubscriptionsToReducer(dispatch)
+  return state
+}
 
+const useBindSubscriptionsToReducer = (dispatch) => {
   useOnRunStartSubscription({
     onSubscriptionData: (data) => {
       dispatch({
@@ -46,5 +50,4 @@ export const useSubscribedTestRunsReducer = () => {
   //   log('useOnRunCompleteSubscriptionData', useOnRunCompleteSubscriptionData)
   // }
   // console.log('state', state)
-  return state
 }
