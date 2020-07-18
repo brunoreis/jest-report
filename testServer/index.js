@@ -17,12 +17,15 @@ const resolvers = {
       pubsub.publish(RUN_START, { onRunStartSubscription: args.data })
     },
     onTestStart: (root, args, context) => {
+      console.log('onTestStart', args)
       pubsub.publish(TEST_START, { onTestStartSubscription: args.data })
     },
     onTestResult: (root, args, context) => {
+      console.log('onTestResult', args)
       pubsub.publish(TEST_RESULT, { onTestResultSubscription: args.data })
     },
     onRunComplete: (root, args, context) => {
+      console.log('onRunComplete', args)
       pubsub.publish(RUN_COMPLETE, { onRunCompleteSubscription: args.data })
     },
   },

@@ -10,6 +10,7 @@ const query = `
 `
 
 module.exports = function (onTestResultMutationInput) {
+  console.log('onTestResultMutationInput', onTestResultMutationInput)
   request(configs.graphQLEndpoint, query, {
     data: onTestResultMutationInput,
   }).then((data) => console.log(data))
