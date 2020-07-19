@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { TestRun } from './TestRun'
-import { TestRunsReducerContext } from './uses'
+import { TestRunsReducerContext } from './_uses'
 
 export const TestRuns = () => {
   const testRunsReducer = useContext(TestRunsReducerContext)
