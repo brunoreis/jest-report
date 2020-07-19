@@ -1,1 +1,1 @@
-export { useSubscribedTestRunsReducer } from '../shares'
+export { TestRunsReducerContext } from '../shares'

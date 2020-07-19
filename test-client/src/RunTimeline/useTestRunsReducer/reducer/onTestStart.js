@@ -6,9 +6,9 @@ export const onTestStart = (
   draftState,
   { payload: { runId, path, duration } },
 ) => {
-  const run = getRun(draftState, runId)
-  const testResult = getTestResult(run, path)
+  const testRun = getRun(draftState, runId)
+  const testResult = getTestResult(testRun, path)
   testResult
     ? (testResult.running = true)
-    : run.testResults.push(initTestResult({ runId, path, duration }))
+    : testRun.testResults.push(initTestResult({ runId, path, duration }))
 }

@@ -1,9 +1,10 @@
-import React from 'react'
-import { useSubscribedTestRunsReducer } from './uses'
+import React, { useContext } from 'react'
 import { TestRun } from './TestRun'
+import { TestRunsReducerContext } from './uses'
 
 export const TestRuns = () => {
-  const { runs } = useSubscribedTestRunsReducer()
+  const testRunsReducer = useContext(TestRunsReducerContext)
+  const runs = testRunsReducer.state.runs
   return (
     <div>
       {runs.map((testRun, key) => (

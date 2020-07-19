@@ -21,5 +21,6 @@ export const useTestRunsReducer = () => {
     onRunStart: buildAction('onRunStart'),
     onTestStart: buildAction('onTestStart'),
     onTestResult: buildAction('onTestResult'),
+    getTestRun: (runId) => state.runs.find((run) => run.runId === runId),
   }
 }

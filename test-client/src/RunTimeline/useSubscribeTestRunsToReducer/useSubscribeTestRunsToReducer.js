@@ -3,18 +3,14 @@ import { useOnTestStartSubscription } from './useOnTestStartSubscription'
 import { useOnTestResultSubscription } from './useOnTestResultSubscription'
 import { useOnRunCompleteSubscription } from './useOnRunCompleteSubscription'
 
-import { useTestRunsReducer } from './useTestRunsReducer'
-
 const debug = true
 
 const log = function () {
   debug && console.log(...arguments)
 }
 
-export const useSubscribedTestRunsReducer = () => {
-  const { state, dispatch } = useTestRunsReducer()
+export const useSubscribeTestRunsToReducer = (dispatch) => {
   useBindSubscriptionsToReducer(dispatch)
-  return state
 }
 
 const useBindSubscriptionsToReducer = (dispatch) => {
