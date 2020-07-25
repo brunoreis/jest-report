@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TestRunWrapper } from './TestRunWrapper'
 import { Title } from './Title'
 import { TestResults } from './TestResults'
+import { TestRunsReducerContext } from './_uses'
 
-export const TestRun = ({ testRun }) => {
-  const { runId, rootDir, testPathPattern } = testRun
+export const TestRun = ({ runId }) => {
+  const { getTestRun } = useContext(TestRunsReducerContext)
+  const { rootDir, testPathPattern } = getTestRun(runId)
 
   return (
     <TestRunWrapper>
@@ -12,7 +14,7 @@ export const TestRun = ({ testRun }) => {
         <div>{rootDir}</div>
         <div>{testPathPattern ? `Pattern: ${testPathPattern}` : null}</div>
       </Title>
-      <TestResults testResults={testRun.testResults} />
+      <TestResults runId={runId} />
     </TestRunWrapper>
   )
 }

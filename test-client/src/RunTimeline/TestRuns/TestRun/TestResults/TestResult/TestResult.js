@@ -5,12 +5,13 @@ import { TestResultWrapper } from './TestResultWrapper'
 import { InnerTestResults } from './InnerTestResults'
 import { TestResultTitle } from './TestResultTitle/TestResultTitle'
 
-export const TestResult = ({ testResult }) => {
-  const path = testResult.path
-  const runId = testResult.runId
-
-  const { getTestRun } = useContext(TestRunsReducerContext)
+export const TestResult = ({ runId, path }) => {
+  const { getTestResult, getTestRun, getNestedInnerTestResult } = useContext(
+    TestRunsReducerContext,
+  )
   const { rootDir } = getTestRun(runId)
+  const testResult = getTestResult(runId, path)
+  const nestedInnerTestResults = getNestedInnerTestResult(runId, path)
 
   return (
     <TestResultWrapper>
@@ -18,7 +19,7 @@ export const TestResult = ({ testResult }) => {
         <TestResultTitle path={path} rootDir={rootDir} />
         <div>{testResult.duration}ms</div>
       </Title>
-      <InnerTestResults innerTestResults={testResult.innerTestResults} />
+      <InnerTestResults innerTestResults={nestedInnerTestResults} />
     </TestResultWrapper>
   )
 }

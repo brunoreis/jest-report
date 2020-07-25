@@ -1,8 +1,8 @@
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useTestRunsReducer } from '../useTestRunsReducer'
-import { mockOnRunStart } from './mock/mockOnRunStart'
-import { mockOnTestStart } from './mock/mockOnTestStart'
-import { mockOnTestResult } from './mock/mockOnTestResult'
+import { onRunStart } from './mock/onRunStart'
+import { onTestStart } from './mock/onTestStart'
+import { onTestResult } from './mock/onTestResult'
 
 describe('useTestRunsReducer | onTestResult', () => {
   describe('onTestResult', () => {
@@ -35,19 +35,3 @@ describe('useTestRunsReducer | onTestResult', () => {
     })
   })
 })
-
-const onRunStart = (result, mockParams) =>
-  act(() => {
-    result.current.onRunStart(mockOnRunStart(mockParams))
-  })
-
-const onTestStart = (result, mockParams) =>
-  act(() => {
-    result.current.onTestStart(mockOnTestStart(mockParams))
-  })
-
-const onTestResult = (result, mockParams) =>
-  act(() => {
-    const mock = mockOnTestResult(mockParams)
-    result.current.onTestResult(mock)
-  })

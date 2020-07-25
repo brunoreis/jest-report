@@ -1,5 +1,6 @@
 import { useReducer, useMemo, useCallback } from 'react'
 import { reducer } from './reducer'
+import { nestInnerTestResults } from './nestInnerTestResults/nestInnerTestResults'
 
 const initialState = () => ({
   runs: [],
@@ -13,7 +14,27 @@ export const useTestRunsReducer = () => {
       type,
       payload,
     })
-  } // use might need to useCallback here. I removed it because it was hiding errors under a "diff num of hooks called" error
+  }
+
+  const getTestRun = useCallback(
+    (runId) => state.runs.find((run) => run.runId === runId),
+    [state.runs],
+  )
+
+  const getRunIds = useCallback(() => state.runs.map((run) => run.runId), [
+    state.runs,
+  ])
+
+  const getTestResultPaths = (runId) =>
+    getTestRun(runId).testResults.map((tr) => tr.path)
+
+  const getTestResult = (runId, path) =>
+    getTestRun(runId).testResults.find((tr) => tr.path === path)
+
+  const getNestedInnerTestResult = (runId, path) => {
+    const testResult = getTestResult(runId, path)
+    return nestInnerTestResults(testResult.innerTestResults)
+  }
 
   return {
     state,
@@ -21,6 +42,10 @@ export const useTestRunsReducer = () => {
     onRunStart: buildAction('onRunStart'),
     onTestStart: buildAction('onTestStart'),
     onTestResult: buildAction('onTestResult'),
-    getTestRun: (runId) => state.runs.find((run) => run.runId === runId),
+    getTestRun,
+    getRunIds,
+    getTestResultPaths,
+    getTestResult,
+    getNestedInnerTestResult,
   }
 }

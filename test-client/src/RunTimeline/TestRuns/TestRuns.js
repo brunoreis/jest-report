@@ -3,12 +3,12 @@ import { TestRun } from './TestRun'
 import { TestRunsReducerContext } from './_uses'
 
 export const TestRuns = () => {
-  const testRunsReducer = useContext(TestRunsReducerContext)
-  const runs = testRunsReducer.state.runs
+  const { getRunIds } = useContext(TestRunsReducerContext)
+
   return (
     <div>
-      {runs.map((testRun, key) => (
-        <TestRun key={key} testRun={testRun} />
+      {getRunIds().map((runId) => (
+        <TestRun key={runId} runId={runId} />
       ))}
     </div>
   )
