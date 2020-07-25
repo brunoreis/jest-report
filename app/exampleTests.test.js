@@ -13,3 +13,7 @@ describe('Example Tests', () => {
     expect(dontRun).toBe(true)
   })
 })
+
+it('root test, no describe', () => {
+  expect(true).toBe(true)
+})

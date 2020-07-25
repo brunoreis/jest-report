@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
-// import debounceRender from 'react-debounce-render'
 import { TestRunsReducerContext } from './_uses'
 import { Title } from './Title'
 import { TestResultWrapper } from './TestResultWrapper'
 import { InnerTestResults } from './InnerTestResults'
-import { TestResultTitle } from './TestResultTitle'
+import { TestResultTitle } from './TestResultTitle/TestResultTitle'
 
 export const TestResult = ({ testResult }) => {
   const path = testResult.path
@@ -23,5 +22,3 @@ export const TestResult = ({ testResult }) => {
     </TestResultWrapper>
   )
 }
-
-// export const TestResult = debounceRender(Result)
