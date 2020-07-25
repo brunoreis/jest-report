@@ -14,6 +14,15 @@ TDD is the best tool I know to code whithout needing to keep big chunks of info 
 
 This is a tool to show jest results on the browser. Initially it will show each run sequentially in the page. That will be a great time saver for a usual tdd flow. In a second iteration, it will consolidate multiple runs into one report, helping even more. A lot of nice interactions will be added to allow a quick keyboar navigation through the results.
 
+Roadmap
+---
+I started this this years and I'm slowly working on it at some nights and weekends. Some next steps I foresee: 
+- improving layout
+- show/hide the inner elements of a describe block when cliking over its title ("Example Tests" and "Sucessfull and nested" in the image above)
+- show what failed, the error stack and any extra information on the failing tests
+- show/hide the failing tests content
+- buttons to open files in the code editor
+- ...
 
 How to Run it / Quick architectural overview
 ---
