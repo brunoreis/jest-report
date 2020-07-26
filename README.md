@@ -32,13 +32,14 @@ Roadmap
 I started this this years and I'm slowly working on it at some nights and weekends. Some next steps I foresee: 
 - ~~improving layout~~
 - ~~show/hide the inner elements of a describe block when cliking over its title ("Example Tests" and "Sucessfull and nested" in the image above)~~
-- show what failed, the error stack and any extra information on the failing tests
+- ~~show what failed, the error stack and any extra information on the failing tests~~
 - show/hide the failing tests content
 - show loaders while tests are running
 - show the "Describe"/"Test" result - fail or success? 
 - show the "Describe"/"Test" totals
 - buttons to open files in the code editor
 - keyboard navigation
+- show the code part where the error happened (it's not comming in the failure message)
 - plugable/customizable/extensible snippets based on failed tests
 - consolidating the result of multiple runs in one report allowing paralele runs (speed) and a report that unites BE and FE tests. 
 - ...
