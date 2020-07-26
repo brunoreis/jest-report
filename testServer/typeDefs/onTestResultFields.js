@@ -1,7 +1,7 @@
 export const TestResultFields = `
   ancestorTitles: [String!]
   duration: Int!
-  failureMessage: String
+  failureMessages: [String!]
   fullName: String!
   location: String
   numPassingAsserts: Int!

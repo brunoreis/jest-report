@@ -34,6 +34,7 @@ const useBindSubscriptionsToReducer = (dispatch) => {
 
   useOnTestResultSubscription({
     onSubscriptionData: ({ subscriptionData }) => {
+      console.log(subscriptionData.data.onTestResultSubscription)
       dispatch({
         type: 'onTestResult',
         payload: subscriptionData.data.onTestResultSubscription,

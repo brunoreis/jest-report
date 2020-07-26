@@ -11,7 +11,7 @@ export const mockOnTestResult = ({
     ({
       ancestorTitles = ['Mock Tests'],
       duration = 2,
-      failureMessage = null,
+      failureMessages = [],
       location = null,
       numPassingAsserts = 0,
       status = 'passed',
@@ -19,7 +19,7 @@ export const mockOnTestResult = ({
     } = {}) => ({
       ancestorTitles,
       duration,
-      failureMessage,
+      failureMessages,
       fullName: `${ancestorTitles.join(' ')} ${title}`,
       location,
       numPassingAsserts,
@@ -30,41 +30,3 @@ export const mockOnTestResult = ({
   ),
   __typename: 'onTestResultSubscriptionResult',
 })
-
-// const p = {
-//   testResults: [
-//     {
-//       ancestorTitles: ['Example Tests', 'Successfull and nested'],
-//       duration: 2,
-//       failureMessage: null,
-//       fullName: 'Example Tests Successfull and nested passes',
-//       location: null,
-//       numPassingAsserts: 0,
-//       status: 'passed',
-//       title: 'passes',
-//       __typename: 'TestResult',
-//     },
-//     {
-//       ancestorTitles: ['Example Tests'],
-//       duration: 3,
-//       failureMessage: null,
-//       fullName: 'Example Tests failing test',
-//       location: null,
-//       numPassingAsserts: 0,
-//       status: 'failed',
-//       title: 'failing test',
-//       __typename: 'TestResult',
-//     },
-//     {
-//       ancestorTitles: ['Example Tests'],
-//       duration: 0,
-//       failureMessage: null,
-//       fullName: 'Example Tests skipped test',
-//       location: null,
-//       numPassingAsserts: 0,
-//       status: 'pending',
-//       title: 'skipped test',
-//       __typename: 'TestResult',
-//     },
-//   ],
-// }

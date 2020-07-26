@@ -1,7 +1,7 @@
 export const initInnerTestResult = ({
   ancestorTitles,
   duration,
-  failureMessage,
+  failureMessages,
   fullName,
   location,
   numPassingAsserts,
@@ -10,7 +10,7 @@ export const initInnerTestResult = ({
 }) => ({
   ancestorTitles,
   duration,
-  failureMessage,
+  failureMessages,
   fullName,
   location,
   numPassingAsserts,

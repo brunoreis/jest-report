@@ -6,12 +6,16 @@ import { Describe } from './Describe/Describe'
 const mapResults = (innerTestResult, level) => {
   return innerTestResult.type === 'describe' ? (
     <Describe
+      key={innerTestResult.title}
       title={innerTestResult.title}
       level={level}
       innerTestResults={innerTestResult.innerTestResults}
     />
   ) : (
-    <InnerTestResult innerTestResult={innerTestResult} />
+    <InnerTestResult
+      key={innerTestResult.title}
+      innerTestResult={innerTestResult}
+    />
   )
 }
 export const InnerTestResults = ({ innerTestResults, level = 0 }) => {

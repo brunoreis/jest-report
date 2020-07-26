@@ -10,7 +10,7 @@ const USE_ON_TEST_RESULT_SUBSCRIPTION = gql`
       testResults {
         ancestorTitles
         duration
-        failureMessage
+        failureMessages
         fullName
         location
         numPassingAsserts

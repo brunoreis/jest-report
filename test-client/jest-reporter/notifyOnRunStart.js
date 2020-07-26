@@ -12,5 +12,5 @@ const query = `
 module.exports = function (onRunStartMutationInput) {
   request(configs.graphQLEndpoint, query, {
     data: onRunStartMutationInput,
-  }).then((data) => console.log(data))
+  })
 }

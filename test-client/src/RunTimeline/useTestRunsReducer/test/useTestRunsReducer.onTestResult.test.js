@@ -6,17 +6,21 @@ import { onTestResult } from './mock/onTestResult'
 
 describe('useTestRunsReducer | onTestResult', () => {
   describe('onTestResult', () => {
-    it('should register the result for the correct test, using the path as the index', () => {
+    it.only('should register the result for the correct test, using the path as the index', () => {
       const { result } = renderHook(() => useTestRunsReducer())
       onRunStart(result, { runId: 'xxxrunId' })
       onTestStart(result, { runId: 'xxxrunId' })
       onTestResult(result, {
         runId: 'xxxrunId',
-        testResults: [{ title: 'test 1' }, { title: 'test 2' }],
+        testResults: [
+          { title: 'test 1', failureMessages: ['a', 'b'] },
+          { title: 'test 2' },
+        ],
       })
       const innerTestResults =
         result.current.state.runs[0].testResults[0].innerTestResults
       expect(innerTestResults.length).toBe(2)
+      expect(innerTestResults[0].failureMessages.length).toBe(2)
       expect(innerTestResults.map(({ fullName }) => fullName)).toEqual([
         'Mock Tests test 1',
         'Mock Tests test 2',

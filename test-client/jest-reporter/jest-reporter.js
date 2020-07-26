@@ -2,6 +2,11 @@ const notifyOnRunStart = require('./notifyOnRunStart')
 const notifyOnTestStart = require('./notifyOnTestStart')
 const notifyOnTestResult = require('./notifyOnTestResult')
 const notifyOnRunComplete = require('./notifyOnRunComplete')
+const fetch = require('node-fetch')
+
+if (!globalThis.fetch) {
+  globalThis.fetch = fetch
+}
 
 const notifyToggles = {
   runStart: true,
@@ -50,7 +55,7 @@ class MyCustomReporter {
       testResults: testResult.testResults.map((testResult) => ({
         ancestorTitles: testResult.ancestorTitles,
         duration: testResult.duration,
-        failureMessage: testResult.failureMessage,
+        failureMessages: testResult.failureMessages,
         fullName: testResult.fullName,
         location: testResult.location,
         numPassingAsserts: testResult.numPassingAsserts,

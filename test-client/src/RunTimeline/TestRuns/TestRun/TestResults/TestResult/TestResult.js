@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react'
+import Spinner from 'reactjs-simple-spinner'
+
 import { TestRunsReducerContext } from './_uses'
 import { Title } from './Title'
 import { Elipsis } from './Elipsis'
@@ -11,9 +13,10 @@ export const TestResult = ({ runId, path }) => {
   const { getTestResult, getTestRun, getNestedInnerTestResult } = useContext(
     TestRunsReducerContext,
   )
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const { rootDir } = getTestRun(runId)
   const testResult = getTestResult(runId, path)
+
   const nestedInnerTestResults = getNestedInnerTestResult(runId, path)
 
   const nameWithoutPath = path.replace(rootDir, '')
@@ -28,6 +31,7 @@ export const TestResult = ({ runId, path }) => {
           {fileName}
           {!open && <Elipsis>...</Elipsis>}
         </TestFile>
+        <div>{testResult.running && <Spinner size="small" />}</div>
         <div>
           <Path>{subpath}</Path>
           {testResult.duration}ms

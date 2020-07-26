@@ -4,7 +4,7 @@ const colors = {
   failed: '#D3302B',
   skipped: '#577',
 }
-export const InnerTestResultWrapper = styled.div`
+export const InnerTestTitleWrapper = styled.div`
   color: ${(props) =>
     props.status == 'passed'
       ? colors.passed
@@ -12,5 +12,6 @@ export const InnerTestResultWrapper = styled.div`
       ? colors.failed
       : colors.skipped};
   margin-bottom: 10px;
+  cursor: pointer;
   margin-top: 10px;
 `
