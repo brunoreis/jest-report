@@ -3,7 +3,7 @@ import { useTestRunsReducer } from '../useTestRunsReducer'
 import { mockOnRunStart } from './mock/mockOnRunStart'
 import { mockOnTestStart } from './mock/mockOnTestStart'
 
-describe('useTestRunsReducer | onTestStart', () => {
+describe('useTestRunsReducer', () => {
   describe('onTestStart', () => {
     it('should register the test for the correct run', () => {
       const { result } = renderHook(() => useTestRunsReducer())

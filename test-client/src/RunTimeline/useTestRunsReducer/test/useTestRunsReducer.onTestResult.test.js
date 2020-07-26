@@ -4,9 +4,9 @@ import { onRunStart } from './mock/onRunStart'
 import { onTestStart } from './mock/onTestStart'
 import { onTestResult } from './mock/onTestResult'
 
-describe('useTestRunsReducer | onTestResult', () => {
+describe('useTestRunsReducer', () => {
   describe('onTestResult', () => {
-    it.only('should register the result for the correct test, using the path as the index', () => {
+    it('should register the result for the correct test, using the path as the index', () => {
       const { result } = renderHook(() => useTestRunsReducer())
       onRunStart(result, { runId: 'xxxrunId' })
       onTestStart(result, { runId: 'xxxrunId' })

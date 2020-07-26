@@ -8,6 +8,7 @@ import { TestResultWrapper } from './TestResultWrapper'
 import { InnerTestResults } from './InnerTestResults'
 import { TestFile } from './TestFile'
 import { Path } from './Path'
+import { CopyToClipboard } from './CopyToClipboard/CopyToClipboard'
 
 export const TestResult = ({ runId, path }) => {
   const { getTestResult, getTestRun, getNestedInnerTestResult } = useContext(
@@ -29,6 +30,7 @@ export const TestResult = ({ runId, path }) => {
       <Title onClick={() => setOpen(!open)}>
         <TestFile>
           {fileName}
+          <CopyToClipboard text={path} />
           {!open && <Elipsis>...</Elipsis>}
         </TestFile>
         <div>{testResult.running && <Spinner size="small" />}</div>
