@@ -33,9 +33,11 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - ~~improving layout~~
 - ~~show/hide the inner elements of a describe block when cliking over its title ("Example Tests" and "Sucessfull and nested" in the image above)~~
 - ~~show what failed, the error stack and any extra information on the failing tests~~
-- show/hide the failing tests content
-- show loaders while tests are running
-- show the "Describe"/"Test" result - fail or success? 
+- ~~show/hide the failing tests content~~
+- ~~show loaders while tests are running~~
+- add a "copy to clipboard" button to copy the test file path
+- add a "copy to clipboard" button to copy file paths from the error stack
+- show the "Describe"/"Test" aggregated result - fail or success? 
 - show the "Describe"/"Test" totals
 - buttons to open files in the code editor
 - keyboard navigation
