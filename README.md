@@ -39,6 +39,7 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - buttons to open files in the code editor
 - keyboard navigation
 - plugable/customizable/extensible snippets based on failed tests
+- consolidating the result of multiple runs in one report allowing paralele runs (speed) and a report that unites BE and FE tests. 
 - ...
 
 How to Run it / Quick architectural overview
