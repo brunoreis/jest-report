@@ -1,6 +1,7 @@
 
 
-![shell and web runs](https://user-images.githubusercontent.com/217240/88461498-64c22b00-ce7a-11ea-8ea2-a530e7bdac9e.png)
+![shell and web runs](https://user-images.githubusercontent.com/217240/88489729-88659e00-cf6c-11ea-8f24-1c7753c5796e.png)
+
 
 Scope
 ---
@@ -27,6 +28,8 @@ Having a tool to show this results in a structured way will the TDD coding cycle
 
 In it will consolidate multiple runs into one report, helping even more. A lot of nice interactions will be added to allow a quick keyboar navigation through the results.
 
+Sorting, reorganizing and and renaming tests is also a proposal here. 
+
 Roadmap
 ---
 I started this this years and I'm slowly working on it at some nights and weekends. Some next steps I foresee: 
@@ -35,8 +38,9 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - ~~show what failed, the error stack and any extra information on the failing tests~~
 - ~~show/hide the failing tests content~~
 - ~~show loaders while tests are running~~
-- add a "copy to clipboard" button to copy the test file path
+- ~~add a "copy to clipboard" button to copy the test file path~~
 - add a "copy to clipboard" button to copy file paths from the error stack
+- add a "delete test run" button to delete a test and allow a quick vision of the next one. 
 - show the "Describe"/"Test" aggregated result - fail or success? 
 - show the "Describe"/"Test" totals
 - buttons to open files in the code editor
