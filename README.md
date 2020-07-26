@@ -27,6 +27,8 @@ Having a tool to show this results in a structured way will the TDD coding cycle
 
 In it will consolidate multiple runs into one report, helping even more. A lot of nice interactions will be added to allow a quick keyboar navigation through the results.
 
+Sorting, reorganizing and and renaming tests is also a proposal here. 
+
 Roadmap
 ---
 I started this this years and I'm slowly working on it at some nights and weekends. Some next steps I foresee: 
