@@ -37,7 +37,7 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - ~~show what failed, the error stack and any extra information on the failing tests~~
 - ~~show/hide the failing tests content~~
 - ~~show loaders while tests are running~~
-- add a "copy to clipboard" button to copy the test file path
+- ~~add a "copy to clipboard" button to copy the test file path~~
 - add a "copy to clipboard" button to copy file paths from the error stack
 - add a "delete test run" button to delete a test and allow a quick vision of the next one. 
 - show the "Describe"/"Test" aggregated result - fail or success? 
