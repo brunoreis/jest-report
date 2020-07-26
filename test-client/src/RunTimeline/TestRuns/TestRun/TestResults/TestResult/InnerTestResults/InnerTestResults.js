@@ -1,16 +1,15 @@
 import React from 'react'
 import { InnerTestResultsWrapper } from './InnerTestResultsWrapper'
 import { InnerTestResult } from './InnerTestResult'
+import { Describe } from './Describe/Describe'
 
 const mapResults = (innerTestResult, level) => {
   return innerTestResult.type === 'describe' ? (
-    <>
-      <div>{innerTestResult.title}</div>
-      <InnerTestResults
-        level={level + 1}
-        innerTestResults={innerTestResult.innerTestResults}
-      />
-    </>
+    <Describe
+      title={innerTestResult.title}
+      level={level}
+      innerTestResults={innerTestResult.innerTestResults}
+    />
   ) : (
     <InnerTestResult innerTestResult={innerTestResult} />
   )

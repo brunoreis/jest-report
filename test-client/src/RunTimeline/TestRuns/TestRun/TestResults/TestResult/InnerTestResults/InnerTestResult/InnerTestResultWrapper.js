@@ -12,4 +12,5 @@ export const InnerTestResultWrapper = styled.div`
       ? colors.failed
       : colors.skipped};
   margin-bottom: 10px;
+  margin-top: 10px;
 `
