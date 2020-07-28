@@ -39,13 +39,15 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - ~~show/hide the failing tests content~~
 - ~~show loaders while tests are running~~
 - ~~add a "copy to clipboard" button to copy the test file path~~
-- add a "copy to clipboard" button to copy file paths from the error stack
-- add a "delete test run" button to delete a test run from the report and allow a quick vision of the next one. (we will need to rethink the UX here)
+- ~~add a "copy to clipboard" button to copy file paths from the error stack~~
+- ~~add a "delete test run" button to delete a test run from the report and allow a quick vision of the next one. (we will need to rethink the UX here)~~
 - show the "Describe"/"Test" aggregated result - fail or success? 
 - show the "Describe"/"Test" totals
 - buttons to open files in the code editor
 - keyboard navigation
 - show the code where the error happened (it doest not come in the failure message from jest)
+- show the test code
+- edit test names and reorder them
 - plugable/customizable/extensible snippets based on failed tests
 - consolidating the result of multiple runs in one report allowing paralele runs (speed) and a report that unites BE and FE tests. 
 - ...
