@@ -50,6 +50,7 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - edit test names and reorder them
 - plugable/customizable/extensible snippets based on failed tests
 - consolidating the result of multiple runs in one report allowing paralele runs (speed) and a report that unites BE and FE tests. 
+- start the runs from the browser. Rerun specific subsets. 
 - ...
 
 How to Run it / Quick architectural overview
