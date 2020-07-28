@@ -6,7 +6,6 @@ import { RunTimeline } from './RunTimeline'
 import { hot } from 'react-hot-loader'
 
 function App() {
-  console.log('App')
   return (
     <ApolloProvider client={apolloClient}>
       <RunTimeline />
