@@ -47,5 +47,6 @@ export const useTestRunsReducer = () => {
     getTestResultPaths,
     getTestResult,
     getNestedInnerTestResult,
+    deleteRun: buildAction('deleteRun'),
   }
 }

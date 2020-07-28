@@ -5,6 +5,11 @@ import { mockOnTestStart } from './mock/mockOnTestStart'
 
 describe('useTestRunsReducer', () => {
   describe('onTestStart', () => {
+    it.only('should ignore a test with an unexistent runId', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+      onTestStart(result, { runId: 'r1' })
+    })
+
     it('should register the test for the correct run', () => {
       const { result } = renderHook(() => useTestRunsReducer())
       onRunStart(result, { runId: 'xxxrunId' })

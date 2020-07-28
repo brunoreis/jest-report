@@ -1,15 +1,27 @@
-import { getRun } from './helpers/getRun'
+import produce from 'immer'
+
+import { getRunIndex } from './helpers/getRunIndex'
 import { initRun } from './helpers/initRun'
 import { initInnerTestResult } from './helpers/initInnerTestResult'
-import { getTestResult } from './helpers/getTestResult'
+import { getTestResultIndex } from './helpers/getTestResultIndex'
 
-export const onTestResult = (draftState, { payload }) => {
-  const run = getRun(draftState, payload.runId)
-  const testResult = getTestResult(run, payload.path)
-  testResult.running = false
+export const onTestResult = (
+  state,
+  { payload: { runId, path, testResults } },
+) => {
+  const runIndex = getRunIndex(state, runId)
+  if (runIndex === -1) return state
 
-  payload.testResults.forEach((innerTestResult) => {
-    const newInnerTestResult = initInnerTestResult(innerTestResult)
-    testResult.innerTestResults.push(newInnerTestResult)
+  const testResultIndex = getTestResultIndex(state, runId, path)
+
+  if (testResultIndex === -1) return state
+
+  return produce(state, (draftState) => {
+    const testResult = draftState.runs[runIndex].testResults[testResultIndex]
+    testResult.running = false
+    testResults.forEach((innerTestResult) => {
+      const newInnerTestResult = initInnerTestResult(innerTestResult)
+      testResult.innerTestResults.push(newInnerTestResult)
+    })
   })
 }

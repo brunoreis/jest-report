@@ -13,15 +13,17 @@ describe('useTestRunsReducer', () => {
       })
     })
 
-    describe('getRunIds', () => {
-      const { result } = renderHook(() => useTestRunsReducer())
-      onRunStart(result, { runId: 'r1' })
-      onRunStart(result, { runId: 'r2' })
-      expect(result.current.getRunIds()).toEqual(['r1', 'r2'])
+    describe('getRunIds()', () => {
+      it('should return the correct array of runId', () => {
+        const { result } = renderHook(() => useTestRunsReducer())
+        onRunStart(result, { runId: 'r1' })
+        onRunStart(result, { runId: 'r2' })
+        expect(result.current.getRunIds()).toEqual(['r1', 'r2'])
+      })
     })
 
-    describe('getTestRun', () => {
-      it('return by runId', () => {
+    describe('getTestRun(runId)', () => {
+      it('return the correct run', () => {
         const { result } = renderHook(() => useTestRunsReducer())
         onRunStart(result, { runId: 'r1' })
         onRunStart(result, { runId: 'r2' })
@@ -31,21 +33,22 @@ describe('useTestRunsReducer', () => {
       })
     })
 
-    describe('getTestResultPaths', () => {
-      it('return by runId', () => {
+    describe('getTestResultPaths(runId)', () => {
+      it('return all the paths of the results of a test run', () => {
         const { result } = renderHook(() => useTestRunsReducer())
         const runId = 'r1'
         const p1 = 'path/1'
         const p2 = 'path/2'
         onRunStart(result, { runId })
         onTestStart(result, { runId, path: p1 })
+
         onTestStart(result, { runId, path: p2 })
         const paths = result.current.getTestResultPaths('r1')
         expect(paths).toEqual([p1, 'path/2'])
       })
     })
 
-    describe('getTestResult', () => {
+    describe('getTestResult(runId, path)', () => {
       it('return by runId and path', () => {
         const { result } = renderHook(() => useTestRunsReducer())
         const runId = 'r1'
@@ -59,7 +62,7 @@ describe('useTestRunsReducer', () => {
       })
     })
 
-    describe('getNestedInnerTestResult', () => {
+    describe('getNestedInnerTestResult(runId, path)', () => {
       it('return innerTestReult nested with describes', () => {
         const { result } = renderHook(() => useTestRunsReducer())
         const runId = 'r1'
@@ -82,6 +85,7 @@ describe('useTestRunsReducer', () => {
         expect(nestedResults[0].type).toBe('describe')
       })
     })
+
     describe('deleteRun(runId)', () => {
       it('deletes the specified test run', () => {
         const { result } = renderHook(() => useTestRunsReducer())

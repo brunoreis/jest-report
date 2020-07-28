@@ -6,6 +6,30 @@ import { onTestResult } from './mock/onTestResult'
 
 describe('useTestRunsReducer', () => {
   describe('onTestResult', () => {
+    it('should ignore a non started test', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+      onRunStart(result, { runId: 'r1' })
+      onTestResult(result, {
+        runId: 'r1',
+        testResults: [
+          { title: 'test 1', failureMessages: ['a', 'b'] },
+          { title: 'test 2' },
+        ],
+      })
+    })
+
+    it('should ignore a test of a run that does not exist', () => {
+      const { result } = renderHook(() => useTestRunsReducer())
+
+      onTestResult(result, {
+        runId: 'r1',
+        testResults: [
+          { title: 'test 1', failureMessages: ['a', 'b'] },
+          { title: 'test 2' },
+        ],
+      })
+    })
+
     it('should register the result for the correct test, using the path as the index', () => {
       const { result } = renderHook(() => useTestRunsReducer())
       onRunStart(result, { runId: 'xxxrunId' })

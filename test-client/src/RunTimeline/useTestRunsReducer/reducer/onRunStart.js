@@ -1,8 +1,9 @@
-import { getRun } from './helpers/getRun'
+import { getRunIndex } from './helpers/getRunIndex'
 import { initRun } from './helpers/initRun'
+import produce from 'immer'
 
 export const onRunStart = (
-  draftState,
+  state,
   {
     payload: {
       runId,
@@ -12,10 +13,15 @@ export const onRunStart = (
       rootDir,
     },
   },
-) =>
-  getRun(draftState, runId)
-    ? console.warn(`onRunStart called again for the same runId: ${runId}`)
-    : draftState.runs.push(
+) => {
+  const runIndex = getRunIndex(state, runId)
+
+  if (runIndex != -1) {
+    console.warn(`onRunStart called again for the same runId: ${runId}`)
+    return state
+  } else {
+    return produce(state, (draftState) => {
+      draftState.runs.push(
         initRun({
           runId,
           estimatedTime,
@@ -24,3 +30,6 @@ export const onRunStart = (
           rootDir,
         }),
       )
+    })
+  }
+}
