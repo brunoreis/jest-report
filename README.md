@@ -28,7 +28,7 @@ Having a tool to show this results in a structured way will the TDD coding cycle
 
 In it will consolidate multiple runs into one report, helping even more. A lot of nice interactions will be added to allow a quick keyboar navigation through the results.
 
-Sorting, reorganizing and and renaming tests is also a proposal here. 
+Sorting, reorganizing and and renaming tests is also an activity where I spend quite some time. But I intend to improve them to be as easy as editing a mind map by using this tool. 
 
 Roadmap
 ---
@@ -40,12 +40,12 @@ I started this this years and I'm slowly working on it at some nights and weeken
 - ~~show loaders while tests are running~~
 - ~~add a "copy to clipboard" button to copy the test file path~~
 - add a "copy to clipboard" button to copy file paths from the error stack
-- add a "delete test run" button to delete a test and allow a quick vision of the next one. 
+- add a "delete test run" button to delete a test run from the report and allow a quick vision of the next one. (we will need to rethink the UX here)
 - show the "Describe"/"Test" aggregated result - fail or success? 
 - show the "Describe"/"Test" totals
 - buttons to open files in the code editor
 - keyboard navigation
-- show the code part where the error happened (it's not comming in the failure message)
+- show the code where the error happened (it doest not come in the failure message from jest)
 - plugable/customizable/extensible snippets based on failed tests
 - consolidating the result of multiple runs in one report allowing paralele runs (speed) and a report that unites BE and FE tests. 
 - ...
@@ -59,8 +59,8 @@ start the test server
 start the test client
 `yarn dev`
 
-run the tests in the app
-`yarn test`
+run the tests in the test-client to see them in the shell and in the browser
+`yarn test --reporters=default --reporters=./jest-reporter/jest-reporter.js --verbose`
 
 The tests app declares a test reporter in jest.config.js:
 `reporters: ['<rootDir>/jest-reporter/jest-reporter.js'],`
