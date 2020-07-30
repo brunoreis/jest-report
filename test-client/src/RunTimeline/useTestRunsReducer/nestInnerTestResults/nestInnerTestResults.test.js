@@ -41,4 +41,20 @@ describe('nestInnerTestResults', () => {
     expect(nestedResults[0].innerTestResults[2].type).toBe('test')
     expect(nestedResults[0].innerTestResults[2].title).toBe('test 3')
   })
+
+  it('a describe should have a status with correct: numPassed, numFailed, numSkipped, numTests', () => {
+    const nestedResults = nestInnerTestResults(innerTestResults)
+    expect(nestedResults[0].status).toEqual({
+      numPassed: 3,
+      numFailed: 0,
+      numSkipped: 0,
+      numTests: 3,
+    })
+    expect(nestedResults[0].innerTestResults[0].status).toEqual({
+      numSkipped: 0,
+      numFailed: 0,
+      numPassed: 1,
+      numTests: 1,
+    })
+  })
 })

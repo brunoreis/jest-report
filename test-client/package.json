@@ -39,6 +39,7 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "testAndReport": "react-scripts test --reporters=default --reporters=./jest-reporter/jest-reporter.js --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

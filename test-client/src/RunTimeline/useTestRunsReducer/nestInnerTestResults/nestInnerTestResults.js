@@ -19,7 +19,6 @@ export const nestInnerTestResults = (innerTestResults) => {
           nested.push(describe)
         }
         if (isLeaf) describe.innerTestResults.push({ type: 'test', ...test })
-
         return describe.innerTestResults
       }, nested)
     } else {
@@ -27,5 +26,46 @@ export const nestInnerTestResults = (innerTestResults) => {
     }
     return nested
   }, nested)
+  const nestedWithDescribeStatuses = calculateStatues(nested)
   return nested
+}
+
+const calculateStatues = (nested) => {
+  return nested.map((item) => {
+    if (item.type === 'describe') {
+      item.innerTestResults = calculateStatues(item.innerTestResults)
+
+      item.status = item.innerTestResults.reduce(
+        (describeResults, itr) => {
+          if (itr.type === 'test') {
+            describeResults.numTests++
+            if (itr.status === 'passed') {
+              describeResults.numPassed++
+            }
+            if (itr.status === 'failed') {
+              describeResults.numFailed++
+            }
+            if (itr.status === 'skipped') {
+              describeResults.numSkipped++
+            }
+          }
+          if (itr.type === 'describe') {
+            describeResults.numSkipped += itr.status.numSkipped
+            describeResults.numFailed += itr.status.numFailed
+            describeResults.numPassed += itr.status.numPassed
+            describeResults.numTests += itr.status.numTests
+          }
+          return describeResults
+        },
+        {
+          numSkipped: 0,
+          numFailed: 0,
+          numPassed: 0,
+          numTests: 0,
+        },
+      )
+    }
+
+    return item
+  })
 }
