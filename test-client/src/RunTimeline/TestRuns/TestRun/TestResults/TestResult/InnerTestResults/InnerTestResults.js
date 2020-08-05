@@ -9,6 +9,7 @@ const mapResults = (innerTestResult, level) => {
       key={innerTestResult.title}
       title={innerTestResult.title}
       level={level}
+      status={innerTestResult.status}
       innerTestResults={innerTestResult.innerTestResults}
     />
   ) : (

@@ -45,12 +45,12 @@ const calculateStatues = (nested) => {
             if (itr.status === 'failed') {
               describeResults.numFailed++
             }
-            if (itr.status === 'skipped') {
-              describeResults.numSkipped++
+            if (itr.status === 'pending') {
+              describeResults.numPending++
             }
           }
           if (itr.type === 'describe') {
-            describeResults.numSkipped += itr.status.numSkipped
+            describeResults.numPending += itr.status.numPending
             describeResults.numFailed += itr.status.numFailed
             describeResults.numPassed += itr.status.numPassed
             describeResults.numTests += itr.status.numTests
@@ -58,7 +58,7 @@ const calculateStatues = (nested) => {
           return describeResults
         },
         {
-          numSkipped: 0,
+          numPending: 0,
           numFailed: 0,
           numPassed: 0,
           numTests: 0,

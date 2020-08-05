@@ -15,6 +15,11 @@ const innerTestResults = [
     title: 'test 3',
   }),
   mockResult({
+    ancestorTitles: ['First Level'],
+    title: 'pending',
+    status: 'pending',
+  }),
+  mockResult({
     ancestorTitles: [],
     title: 'root test, no describe',
   }),
@@ -27,7 +32,7 @@ describe('nestInnerTestResults', () => {
     expect(nestedResults[0].type).toBe('describe')
     expect(nestedResults[0].title).toBe('First Level')
     expect(nestedResults[1].title).toBe('root test, no describe')
-    expect(nestedResults[0].innerTestResults.length).toBe(3)
+    expect(nestedResults[0].innerTestResults.length).toBe(4)
     expect(nestedResults[0].innerTestResults[0].type).toBe('describe')
     expect(nestedResults[0].innerTestResults[0].title).toBe('Second Level')
     expect(nestedResults[0].innerTestResults[0].innerTestResults[0].type).toBe(
@@ -42,16 +47,16 @@ describe('nestInnerTestResults', () => {
     expect(nestedResults[0].innerTestResults[2].title).toBe('test 3')
   })
 
-  it('a describe should have a status with correct: numPassed, numFailed, numSkipped, numTests', () => {
+  it('a describe should have a status with correct: numPassed, numFailed, numPending, numTests', () => {
     const nestedResults = nestInnerTestResults(innerTestResults)
     expect(nestedResults[0].status).toEqual({
       numPassed: 3,
       numFailed: 0,
-      numSkipped: 0,
-      numTests: 3,
+      numPending: 1,
+      numTests: 4,
     })
     expect(nestedResults[0].innerTestResults[0].status).toEqual({
-      numSkipped: 0,
+      numPending: 0,
       numFailed: 0,
       numPassed: 1,
       numTests: 1,

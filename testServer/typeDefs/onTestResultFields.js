@@ -1,6 +1,6 @@
 export const TestResultFields = `
   ancestorTitles: [String!]
-  duration: Int!
+  duration: Int
   failureMessages: [String!]
   fullName: String!
   location: String
@@ -12,7 +12,7 @@ export const TestResultFields = `
 export const onTestResultFields = ({ input = false }) => {
   return `
   runId: ID!
-  duration: Int!
+  duration: Int
   path: String!
   testResults: [${input ? 'TestResultInput' : 'TestResult'}!]
 `
