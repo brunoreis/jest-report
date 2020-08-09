@@ -1,7 +1,6 @@
 import produce from 'immer'
 
 import { getRunIndex } from './helpers/getRunIndex'
-import { initRun } from './helpers/initRun'
 import { initInnerTestResult } from './helpers/initInnerTestResult'
 import { getTestResultIndex } from './helpers/getTestResultIndex'
 

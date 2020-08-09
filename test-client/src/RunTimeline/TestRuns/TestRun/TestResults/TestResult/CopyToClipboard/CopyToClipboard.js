@@ -11,7 +11,7 @@ export const CopyToClipboard = ({ text }) => {
         e.stopPropagation()
       }}
     >
-      <img src={icon} width={18} />
+      <img src={icon} alt="copy to clipboard" width={18} />
     </CopyToClipboardWrapper>
   )
 }

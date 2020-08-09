@@ -16,7 +16,7 @@ export const onRunStart = (
 ) => {
   const runIndex = getRunIndex(state, runId)
 
-  if (runIndex != -1) {
+  if (runIndex !== -1) {
     console.warn(`onRunStart called again for the same runId: ${runId}`)
     return state
   } else {

@@ -19,6 +19,7 @@ export const TestResult = ({ runId, path }) => {
   const testResult = getTestResult(runId, path)
 
   const nestedInnerTestResults = getNestedInnerTestResult(runId, path)
+  console.log('TestResult -> nestedInnerTestResults', nestedInnerTestResults)
 
   const nameWithoutPath = path.replace(rootDir, '')
   const parts = nameWithoutPath.split('/')

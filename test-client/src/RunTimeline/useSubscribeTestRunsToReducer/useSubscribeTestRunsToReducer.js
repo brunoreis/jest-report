@@ -1,13 +1,7 @@
 import { useOnRunStartSubscription } from './useOnRunStartSubscription'
 import { useOnTestStartSubscription } from './useOnTestStartSubscription'
 import { useOnTestResultSubscription } from './useOnTestResultSubscription'
-import { useOnRunCompleteSubscription } from './useOnRunCompleteSubscription'
-
-const debug = true
-
-const log = function () {
-  debug && console.log(...arguments)
-}
+// import { useOnRunCompleteSubscription } from './useOnRunCompleteSubscription'
 
 export const useSubscribeTestRunsToReducer = (dispatch) => {
   useBindSubscriptionsToReducer(dispatch)
@@ -40,10 +34,4 @@ const useBindSubscriptionsToReducer = (dispatch) => {
       })
     },
   })
-
-  // const useOnRunCompleteSubscriptionData = useOnRunCompleteSubscription()
-  // if (useOnRunCompleteSubscriptionData) {
-  //   log('useOnRunCompleteSubscriptionData', useOnRunCompleteSubscriptionData)
-  // }
-  // console.log('state', state)
 }

@@ -6,9 +6,9 @@ const colors = {
 }
 export const InnerTestTitleWrapper = styled.div`
   color: ${(props) =>
-    props.status == 'passed'
+    props.status === 'passed'
       ? colors.passed
-      : props.status == 'failed'
+      : props.status === 'failed'
       ? colors.failed
       : colors.skipped};
   margin-bottom: 10px;

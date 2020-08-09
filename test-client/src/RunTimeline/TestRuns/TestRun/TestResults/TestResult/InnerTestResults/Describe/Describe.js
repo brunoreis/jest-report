@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { InnerTestResults } from '../InnerTestResults'
 import { DescribeTitle, Title, Totals } from './Describe.styles.js'
-import { Elipsis } from './_uses'
 import { NumTests } from './NumTests'
 
 export const Describe = ({ title, level, innerTestResults, status }) => {

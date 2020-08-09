@@ -1,4 +1,4 @@
-import { useReducer, useMemo, useCallback } from 'react'
+import { useReducer, useCallback } from 'react'
 import { reducer } from './reducer'
 import { nestInnerTestResults } from './nestInnerTestResults/nestInnerTestResults'
 

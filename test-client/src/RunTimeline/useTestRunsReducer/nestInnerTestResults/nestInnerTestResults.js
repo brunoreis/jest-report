@@ -27,7 +27,7 @@ export const nestInnerTestResults = (innerTestResults) => {
     return nested
   }, nested)
   const nestedWithDescribeStatuses = calculateStatues(nested)
-  return nested
+  return nestedWithDescribeStatuses
 }
 
 const calculateStatues = (nested) => {
