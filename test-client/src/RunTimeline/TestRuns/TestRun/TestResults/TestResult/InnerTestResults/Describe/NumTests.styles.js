@@ -1,9 +1,14 @@
 import styled from 'styled-components'
-
 export const NumTestsWrapper = styled.div`
   margin-left: 5px;
-  background-color: ${({ failed, passed, skipped }) =>
-    failed ? '#CAA' : passed ? '#ACA' : '#AAA'};
+  background-color: ${({ failed, skipped, total, empty }) =>
+    empty
+      ? 'transparent'
+      : failed
+      ? '#DBB'
+      : total
+      ? 'transparent'
+      : '#BFBFBF'};
   font-weight: bold;
   font-size: 14px;
   display: inline-block;
@@ -12,5 +17,5 @@ export const NumTestsWrapper = styled.div`
   border-radius: 4px;
   min-width: 10px;
   text-align: center;
-  color: #fff;
+  color: ${({ total }) => (total ? '#777' : '#FFF')};
 `

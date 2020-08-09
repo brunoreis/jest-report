@@ -1,5 +1,5 @@
-describe('Mocked Nested', () => {
-  describe('two passing and one failing', () => {
+describe('Describe Block 1', () => {
+  describe('Describe Block 2', () => {
     describe('sum', () => {
       it('one plus one equals two', () => {
         expect(1 + 1).toBe(2)
@@ -22,6 +22,10 @@ describe('Mocked Nested', () => {
       it('three times two', () => {
         expect(3 * 2).toBe(6)
       })
+    })
+
+    it('passing in the same level as the describe blocks', () => {
+      expect(1 + 1).toBe(2)
     })
   })
 })

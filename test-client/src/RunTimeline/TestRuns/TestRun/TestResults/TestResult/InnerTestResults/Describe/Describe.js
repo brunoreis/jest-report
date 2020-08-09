@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react'
 import { InnerTestResults } from '../InnerTestResults'
-import { DescribeTitle } from './DescribeTitle'
+import { DescribeTitle, Title, Totals } from './Describe.styles.js'
 import { Elipsis } from './_uses'
-import { NumTestsWrapper } from './NumTestsWrapper.js'
+import { NumTests } from './NumTests'
 
 export const Describe = ({ title, level, innerTestResults, status }) => {
   const { numFailed, numPassed, numTests, numPending } = status
@@ -12,17 +12,13 @@ export const Describe = ({ title, level, innerTestResults, status }) => {
     numFailed > 0 ? 'error' : numPassed > 0 ? 'success' : 'skipped'
   return (
     <>
-      <DescribeTitle onClick={toggle} finalStatus={finalStatus}>
-        {title}
-        {numFailed ? (
-          <NumTestsWrapper failed>{numFailed}</NumTestsWrapper>
-        ) : null}
-        {numPassed ? (
-          <NumTestsWrapper passed>{numPassed}</NumTestsWrapper>
-        ) : null}
-        {numPending ? (
-          <NumTestsWrapper pending>{numPending}</NumTestsWrapper>
-        ) : null}
+      <DescribeTitle onClick={toggle} finalStatus={finalStatus} open={open}>
+        <Title>{title}</Title>
+        <Totals>
+          <NumTests failed>{numFailed}</NumTests>
+          <NumTests pending>{numPending}</NumTests>
+          <NumTests total>{numTests}</NumTests>
+        </Totals>
       </DescribeTitle>
       {open && (
         <InnerTestResults

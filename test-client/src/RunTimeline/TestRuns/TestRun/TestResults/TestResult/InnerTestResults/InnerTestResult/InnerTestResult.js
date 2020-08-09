@@ -11,7 +11,7 @@ const InnerResult = ({ innerTestResult }) => {
   return (
     <>
       <InnerTestTitleWrapper onClick={() => setOpen(!open)} status={status}>
-        {title} {!open && <Elipsis>...</Elipsis>}
+        ∙ {title} {!open && <Elipsis>...</Elipsis>}
       </InnerTestTitleWrapper>
       {open &&
         failureMessages.map((message) => <ErrorMessage message={message} />)}

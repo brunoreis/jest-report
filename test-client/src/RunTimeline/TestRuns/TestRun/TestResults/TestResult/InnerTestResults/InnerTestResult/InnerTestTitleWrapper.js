@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 const colors = {
-  passed: '#070',
+  passed: '#080',
   failed: '#D3302B',
   skipped: '#577',
 }
