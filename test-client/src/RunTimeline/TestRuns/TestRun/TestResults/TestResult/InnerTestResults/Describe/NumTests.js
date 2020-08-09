@@ -16,5 +16,5 @@ export const NumTests = ({ children: numTests, failed, total, pending }) => {
 }
 
 NumTests.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.number.isRequired,
 }

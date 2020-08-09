@@ -13,7 +13,9 @@ export const InnerTestResult = ({ innerTestResult }) => {
         ∙ {title} {!open && <Elipsis>...</Elipsis>}
       </InnerTestTitleWrapper>
       {open &&
-        failureMessages.map((message) => <ErrorMessage message={message} />)}
+        failureMessages.map((message, index) => (
+          <ErrorMessage key={index} message={message} />
+        ))}
     </div>
   )
 }
