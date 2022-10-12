@@ -10,7 +10,7 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "apollo-server": "^2.14.3",
+    "apollo-server": "^2.25.4",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "graphql": "^15.1.0",
